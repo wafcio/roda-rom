@@ -19,11 +19,10 @@ class App < Roda
 
   use Rack::Deflater
 
-  # get '/' do
-  #   redirect('/status')
-  # end
-
   route do |r|
+    r.root do
+      r.redirect '/status'
+    end
   end
 
   # use API::App
