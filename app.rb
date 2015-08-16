@@ -1,27 +1,30 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'sinatra/base'
+require 'roda'
 require 'dotenv'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/hash/slice'
 require 'active_support/inflector'
 
-require_relative 'apps/api'
-require_relative 'apps/heartbeat'
+# require_relative 'apps/api'
 
 Dotenv.load
 
-class App < Sinatra::Base
-  enable :sessions, :protection
-  set :session_secret, ENV.fetch('SECRET')
+class App < Roda
+  plugin :heartbeat, path: '/status'
+
+  # enable :sessions, :protection
+  # set :session_secret, ENV.fetch('SECRET')
 
   use Rack::Deflater
 
-  get '/' do
-    redirect('/status')
+  # get '/' do
+  #   redirect('/status')
+  # end
+
+  route do |r|
   end
 
-  use Heartbeat
-  use API::App
+  # use API::App
 end

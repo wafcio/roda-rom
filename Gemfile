@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby '2.2.0'
 
 gem 'bundler'
-gem 'sinatra'
+gem 'roda'
 gem 'rom', github: 'rom-rb/rom'
 gem 'rom-sql', github: 'rom-rb/rom-sql'
 gem 'virtus'

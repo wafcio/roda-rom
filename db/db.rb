@@ -1,3 +1,6 @@
+require 'rom-sql'
+require 'virtus'
+
 module DB
   extend self
 

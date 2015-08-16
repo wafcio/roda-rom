@@ -1,7 +1,7 @@
-Sinatra-ROM
+Roda-ROM
 ================
 
-Simple app to intruduce how to use ROM with sinatra app.
+Simple app to introduce how to use ROM with roda app.
 
 How to run locally
 ------------------
