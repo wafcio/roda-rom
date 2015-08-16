@@ -14,9 +14,7 @@ Dotenv.load
 class App < Roda
   plugin :heartbeat, path: '/status'
 
-  # enable :sessions, :protection
-  # set :session_secret, ENV.fetch('SECRET')
-
+  use Rack::Session::Cookie, secret: ENV.fetch('SECRET')
   use Rack::Deflater
 
   route do |r|
