@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/celsworth/roda.git
+  revision: 95ba5eafbb192ff84df83749f35881aa2e6b036f
+  specs:
+    roda (2.5.1)
+      rack
+
+GIT
   remote: git://github.com/rom-rb/rom-sql.git
   revision: 343b3b5ac0120dc715b04f0961a1cdba22b07ad9
   specs:
@@ -51,8 +58,6 @@ GEM
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
-    roda (2.5.1)
-      rack
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -92,7 +97,7 @@ DEPENDENCIES
   oj
   puma
   rack-test
-  roda
+  roda!
   rom!
   rom-sql!
   rspec

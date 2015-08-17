@@ -5,7 +5,7 @@ module HttpBasicAuthorization
 
   # Stops processing request if the request is not over SSL.
   def require_ssl!
-    throw(:halt, 403) unless request.secure?
+    request.halt(403) unless request.ssl?
   end
 
   # Stops processing request if request credentials don't match.
@@ -14,7 +14,7 @@ module HttpBasicAuthorization
     unless auth.provided? && auth.basic? && auth.credentials &&
         auth.credentials == [username, password]
       response['WWW-Authenticate'] = %(Basic realm="#{realm}")
-      throw(:halt, 401)
+      request.halt(401)
     end
   end
 

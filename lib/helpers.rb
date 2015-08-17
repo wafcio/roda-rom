@@ -1,31 +1,24 @@
-require 'multi_json'
-require 'oj'
-
 module API
   module Helpers
-    def json_error(code, message)
+    def json_error(r, code, message)
       error = {
         code: code,
         message: message
       }
-      halt code, json(error)
+      r.halt code, error
     end
 
-    def json(hash)
-      content_type :json
-      ::MultiJson.dump(hash, pretty: true)
+    def record_not_found(r, params, fields=[:id])
+      json_error(r, 404, "Record Not Found for given #{fields} => #{params}")
     end
 
-    def record_not_found(params, fields=[:id])
-      json_error(404, "Record Not Found for given #{fields} => #{params}")
+    def invalid_params(r, fields)
+      json_error(r, 422, "Invalid data for fields: #{fields.join(', ')}")
     end
 
-    def invalid_params(fields)
-      json_error(422, "Invalid data for fields: #{fields.join(', ')}")
-    end
-
-    def delete_response
-      204
+    def delete_response(r)
+      r.response.status = 204
+      r.response.write(nil)
     end
 
     def rom
