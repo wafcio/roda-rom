@@ -60,9 +60,14 @@ class App < Roda
     end
 
     require_relative 'apps/products'
+    require_relative 'apps/users'
 
     r.on 'products' do
       r.route 'products'
+    end
+
+    r.on 'users' do
+      r.route 'users'
     end
   end
 end
